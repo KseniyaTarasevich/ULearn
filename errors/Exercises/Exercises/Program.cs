@@ -6,7 +6,8 @@ namespace Exercises
     class Program
     {
 
-        // Expr10. Найти сумму всех положительных чисел меньше 1000 кратных 3 или 5.
+        // Expr10. 
+        // Найти сумму всех положительных чисел меньше 1000 кратных 3 или 5.
         static string FindSum()
         {
             int a1 = 3;
@@ -21,9 +22,40 @@ namespace Exercises
             return (sum1 + sum2 - (2 * a1 * b1 + (a1 + b1) * 65) * 65 / 2).ToString();
         }
 
+        // Expr11. 
+        // Дано время в часах и минутах. Найти угол от часовой к минутной стрелке на обычных часах.
+        public static void FindAngle()
+        {
+            Console.WriteLine("Enter hours: ");
+            int hour = int.Parse(Console.ReadLine());
+            Console.WriteLine("Enter minutes: ");
+            int minute = int.Parse(Console.ReadLine());
+            Console.WriteLine("Angle:" + (double)((hour + minute / 60) * 30 - minute * 6));
+        }
+
+        // Expr13. 1084. Пусти козла в огород
+        // Козла пустили в квадратный огород и привязали к колышку.
+        // Колышек воткнули точно в центре огорода.Козёл ест всё, до чего дотянется, не перелезая через забор огорода и не разрывая веревку.
+        //Какая площадь огорода будет объедена? Даны длина веревки и размеры огорода.
+        public static void FindArea(string dataInput)
+        {
+            string[] data = dataInput.Split(' ');
+            double a = double.Parse(data[0]);
+            double r = double.Parse(data[1]);
+            double s;
+
+            if (r <= a / 2) s = Math.PI * r * r;
+            else if (r >= a * Math.Sqrt(2) / 2) s = a * a;
+            else s = Math.PI * r * r - 2 * r * r * (2*Math.Asin(Math.Sqrt(r*r-a*a/4)/r) - (4* Math.Sqrt(r * r - a * a / 4) /2* r));
+            Console.WriteLine(s);
+        }
+
         static void Main(string[] args)
         {
-            Console.WriteLine(FindSum());
+            //Console.WriteLine(FindSum());
+            //FindAngle();
+            string str = Console.ReadLine();
+            FindArea(str);
         }
     }
 }
