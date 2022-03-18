@@ -1,0 +1,4 @@
+﻿Сборка начата…
+1>------ Сборка начата: проект: Distance, Конфигурация: Debug Any CPU ------
+1>  Distance -> D:\Kseniya\mine\projects\c sharp\Distance\bin\Debug\Distance.exe
+========== Сборка: успешно: 1, с ошибками: 0, без изменений: 0, пропущено: 0 ==========
