@@ -46,7 +46,7 @@ namespace Exercises
 
             if (r <= a / 2) s = Math.PI * r * r;
             else if (r >= a * Math.Sqrt(2) / 2) s = a * a;
-            else s = Math.PI * r * r - 2 * r * r * (Math.Acos((r * r - Math.Sqrt(r * r - a * a / 4)) / r * r) - (Math.Sqrt(1 - (r * r - Math.Sqrt(r * r - a * a / 4)) / r * r)));
+            else s = Math.PI * r * r - 8 * (0.5 * r * r * Math.Acos(a / 2 / r) - a / 2 * Math.Sqrt(r * r - a * a / 4));
             Console.WriteLine(s);
         }
 
