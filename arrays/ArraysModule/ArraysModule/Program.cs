@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 /*
 
@@ -44,50 +45,45 @@ namespace ArraysModule
 
         public static void MakeNewArray(int[] array1, int[] array2)
         {
-            int[] unification = new int[array1.Length + array2.Length];
-            int[] intersection = new int[Math.Min(array1.Length, array2.Length)];
-            int[] difference = new int[array1.Length];
+            List<int> unification = new List<int>();
+            List<int> intersection = new List<int>();
+            List<int> difference = new List<int>();
 
             for (int i = 0; i < array1.Length; i++)
             {
-                unification[i] = array1[i];
+                unification.Add(array1[i]);
+                difference.Add(array1[i]);
             }
+
+            foreach (int number in array2)
+            {
+                if (!unification.Contains(number)) unification.Add(number);
+                if (difference.Contains(number)) difference.Remove(number);
+            }
+
 
             for (int j = 0; j < array2.Length; j++)
             {
                 for (int k = 0; k < array1.Length; k++)
                 {
-                    if (array2[j] != unification[k]) unification[array1.Length + 1] = array2[j];
+                    if (array2[j] == array1[k]) intersection.Add(array2[j]);
                 }
             }
 
-            for (int i = 0; i < unification.Length; i++)
+            Console.Write("unification: ");
+            for (int i = 0; i < unification.Count; i++)
                 Console.Write(unification[i] + " ");
 
-            for (int j = 0; j < array2.Length; j++)
-            {
-                for (int k = 0; k < array1.Length; k++)
-                {
-                    if (array2[j] == array1[k]) intersection[j] = array2[j];
-                }
-            }
-
             Console.WriteLine();
 
-            for (int i = 0; i < intersection.Length; i++)
+            Console.Write("intersection: ");
+            for (int i = 0; i < intersection.Count; i++)
                 Console.Write(intersection[i] + " ");
 
-            for (int j = 0; j < difference.Length; j++)
-            {
-                for (int k = 0; k < array2.Length; k++)
-                {
-                    if (array1[j] != array2[k]) difference[j] = array1[j];
-                }
-            }
-
             Console.WriteLine();
 
-            for (int i = 0; i < difference.Length; i++)
+            Console.Write("difference: ");
+            for (int i = 0; i < difference.Count; i++)
                 Console.Write(difference[i] + " ");
         }
         static void Main(string[] args)
