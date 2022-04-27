@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 
 
-Arr3. Перевести число из системы счисления с основанием A в систему с основанием B. Можно считать, что 2 ≤ A, B ≤ 10, а число дано в виде массива цифр.
+
 
 Arr4. Превратить рациональную дробь a/b (0 < a < b < 100000) в десятичную. Возможен период. "1/6" должна превратиться в "0.1(6)"
 
@@ -42,6 +42,7 @@ namespace ArraysModule
         // Arr2.
         // Даны два неубывающих массива чисел.
         // Сформировать неубывающие массивы, являющиеся объединением, пересечением и разностью этих двух массивов (разность в смысле мультимножеств).
+
 
         public static void MakeNewArray(int[] array1, int[] array2)
         {
@@ -86,10 +87,39 @@ namespace ArraysModule
             for (int i = 0; i < difference.Count; i++)
                 Console.Write(difference[i] + " ");
         }
+
+        // Arr3.
+        // Перевести число из системы счисления с основанием A в систему с основанием B.
+        // Можно считать, что 2 ≤ A, B ≤ 10, а число дано в виде массива цифр.
+
+        public static void ChangeNumberSystem(int a, double b, int[] number)
+        {
+            double num = 0;
+           // double temp;
+          List<double> list = new List<double>();
+
+            for (int i = 0, j = number.Length - 1; i < number.Length; i++, j--)
+            {
+                num += number[i] * Math.Pow(a, j);
+            }
+
+             string str = "";
+            while (num > 0)
+            {
+                str = String.Concat(Convert.ToString(num % b), str); // РАЗОБРАТЬ
+                num = Math.Truncate(num / b);
+
+                //list.Add(num % b);
+                //num /= b;
+            }
+            Console.WriteLine(str);
+        }
+
         static void Main(string[] args)
         {
             //MakeOffset(new int[] { 11, 12, 13, 14, 15 }, 2);
-            MakeNewArray(new int[] { 1, 2, 3 }, new int[] { 2, 4 });
+            //MakeNewArray(new int[] { 1, 2, 3 }, new int[] { 2, 4 });
+            ChangeNumberSystem(2, 8, new int[] { 1, 0,1,0});
         }
     }
 }
