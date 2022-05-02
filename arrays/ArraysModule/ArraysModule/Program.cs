@@ -1,20 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 
-/*
-
-
-
-
-
-Arr4. Превратить рациональную дробь a/b (0 < a < b < 100000) в десятичную. Возможен период. "1/6" должна превратиться в "0.1(6)"
-
-Arr5. * Дан неубывающий массив положительных целых чисел. Найти наименьшее положительное целое число, не представимое в виде суммы элементов этого массива (каждый элемент разрешается использовать в сумме только один раз).
-
-Arr6. 1139. Городские кварталы
-
-Arr7. 1490. Огненный круг*/
-
 namespace ArraysModule
 {
     class Program
@@ -42,7 +28,6 @@ namespace ArraysModule
         // Arr2.
         // Даны два неубывающих массива чисел.
         // Сформировать неубывающие массивы, являющиеся объединением, пересечением и разностью этих двух массивов (разность в смысле мультимножеств).
-
 
         public static void MakeNewArray(int[] array1, int[] array2)
         {
@@ -95,22 +80,17 @@ namespace ArraysModule
         public static void ChangeNumberSystem(int a, double b, int[] number)
         {
             double num = 0;
-           // double temp;
-          List<double> list = new List<double>();
+            string str = "";
 
             for (int i = 0, j = number.Length - 1; i < number.Length; i++, j--)
             {
                 num += number[i] * Math.Pow(a, j);
             }
 
-             string str = "";
             while (num > 0)
             {
-                str = String.Concat(Convert.ToString(num % b), str); // РАЗОБРАТЬ
+                str = String.Concat(Convert.ToString(num % b), str);
                 num = Math.Truncate(num / b);
-
-                //list.Add(num % b);
-                //num /= b;
             }
             Console.WriteLine(str);
         }
@@ -119,7 +99,7 @@ namespace ArraysModule
         {
             //MakeOffset(new int[] { 11, 12, 13, 14, 15 }, 2);
             //MakeNewArray(new int[] { 1, 2, 3 }, new int[] { 2, 4 });
-            ChangeNumberSystem(2, 8, new int[] { 1, 0,1,0});
+            //ChangeNumberSystem(2, 8, new int[] { 1, 0,1,0});
         }
     }
 }
